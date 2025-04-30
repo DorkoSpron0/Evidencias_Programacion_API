@@ -1,3 +1,6 @@
 [submodule "Gestion_Productos_POO_SENA"]
 	path = Gestion_Productos_POO_SENA
 	url = https://github.com/DorkoSpron0/Gestion_Productos_POO_SENA.git
+[submodule "Gestion_Estudiante_Curso_JPA_SENA"]
+	path = Gestion_Estudiante_Curso_JPA_SENA
+	url = https://github.com/DorkoSpron0/Gestion_Estudiante_Curso_JPA_SENA.git
