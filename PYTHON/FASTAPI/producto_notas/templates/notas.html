@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Notas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #ddd;
+        }
+        form {
+            display: inline;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .update-btn {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .add-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+    <a href="/api/v1">Inicio</a>
+    <a href="/api/v1/estudiantes">Ver Estudiantes</a>
+    <a href="/api/v1/estudiantes/register">Registrar Estudiante</a>
+    <a href="/api/v1/notas">Ver Notas</a>
+    <a href="/api/v1/notas/register">Registrar Nota</a>
+    <a href="/api/v1/reporte">Reporte General</a>
+  </nav>
+    <h2 style="text-align:center;">Lista de Notas</h2>
+
+    <!-- Botón para Añadir nueva nota -->
+    <a href="/api/v1/notas/register" class="add-btn">➕ Añadir Nota</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Nota</th>
+                <th>ID Estudiante</th>
+                <th>Matemáticas</th>
+                <th>Inglés</th>
+                <th>Español</th>
+                <th>Sociales</th>
+                <th>Comentario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nota in notas %}
+                <tr>
+                    <td>{{ nota[0] }}</td>
+                    <td>{{ nota[1] }}</td>
+                    <td>{{ nota[2] }}</td>
+                    <td>{{ nota[3] }}</td>
+                    <td>{{ nota[4] }}</td>
+                    <td>{{ nota[5] }}</td>
+                    <td>{{ nota[6] }}</td>
+                    <td>
+                        <form action="/api/v1/notas/{{ nota[0] }}/eliminar" method="post" onsubmit="return confirm('¿Eliminar esta nota?');">
+                            <button type="submit" class="delete-btn">Eliminar</button>
+                        </form>
+                        <form action="/api/v1/notas/{{ nota[0] }}/editar" method="get">
+                            <button type="submit" class="update-btn">Actualizar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

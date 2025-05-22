@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Estudiante</title>
+</head>
+<body>
+
+<nav>
+    <a href="/api/v1">Inicio</a>
+    <a href="/api/v1/estudiantes">Ver Estudiantes</a>
+    <a href="/api/v1/estudiantes/register">Registrar Estudiante</a>
+    <a href="/api/v1/notas">Ver Notas</a>
+    <a href="/api/v1/notas/register">Registrar Nota</a>
+    <a href="/api/v1/reporte">Reporte General</a>
+  </nav>
+
+  <h2>Registrar Nuevo Estudiante</h2>
+
+  <form id="estudianteForm" method="post" action="/api/v1/estudiantes">
+    <label for="id">ID:</label><br>
+    <input type="number" id="id" name="id" required><br><br>
+
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="apellido">Apellido:</label><br>
+    <input type="text" id="apellido" name="apellido" required><br><br>
+
+    <label for="edad">Edad:</label><br>
+    <input type="number" id="edad" name="edad" required><br><br>
+
+    <label for="celular">Celular:</label><br>
+    <input type="tel" id="celular" name="celular" required><br><br>
+
+    <button type="submit">Registrar</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Estudiantes</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #ddd;
+        }
+        form {
+            display: inline;
+        }
+        .delete-btn {
+            background-color: #e53935;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .update-btn {
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .add-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/api/v1">Inicio</a>
+    <a href="/api/v1/estudiantes">Ver Estudiantes</a>
+    <a href="/api/v1/estudiantes/register">Registrar Estudiante</a>
+    <a href="/api/v1/notas">Ver Notas</a>
+    <a href="/api/v1/notas/register">Registrar Nota</a>
+    <a href="/api/v1/reporte">Reporte General</a>
+  </nav>
+
+    <h2 style="text-align:center;">Lista de Estudiantes</h2>
+
+    <a href="/api/v1/estudiantes/register" class="add-btn">➕ Añadir Estudiante</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Celular</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudiante in estudiantes %}
+                <tr>
+                    <td>{{ estudiante[0] }}</td>
+                    <td>{{ estudiante[1] }}</td>
+                    <td>{{ estudiante[2] }}</td>
+                    <td>{{ estudiante[3] }}</td>
+                    <td>{{ estudiante[4] }}</td>
+                    <td>
+                        <form action="/api/v1/estudiantes/{{ estudiante[0] }}/eliminar" method="post" onsubmit="return confirm('¿Seguro que deseas eliminar este estudiante?');">
+                            <button type="submit" class="delete-btn">Eliminar</button>
+                        </form>
+                        <form action="/api/v1/estudiantes/{{ estudiante[0] }}/editar" method="get">
+                            <button type="submit" class="update-btn">Actualizar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

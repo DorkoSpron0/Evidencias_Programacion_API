@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes con Notas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 95%;
+            margin: 30px auto;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+    <a href="/api/v1">Inicio</a>
+    <a href="/api/v1/estudiantes">Ver Estudiantes</a>
+    <a href="/api/v1/estudiantes/register">Registrar Estudiante</a>
+    <a href="/api/v1/notas">Ver Notas</a>
+    <a href="/api/v1/notas/register">Registrar Nota</a>
+    <a href="/api/v1/reporte">Reporte General</a>
+  </nav>
+
+    <h2 style="text-align: center;">Estudiantes con sus Notas</h2>
+
+  <form action="/api/v1/reporte/generate" method="post">
+    <input type="submit" value="Generar">
+  </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Estudiante</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Celular</th>
+                <th>ID Nota</th>
+                <th>Matemáticas</th>
+                <th>Inglés</th>
+                <th>Español</th>
+                <th>Sociales</th>
+                <th>Comentario</th>
+                <th>Promedio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+                <tr>
+                    <td>{{ registro[0] }}</td>
+                    <td>{{ registro[1] }}</td>
+                    <td>{{ registro[2] }}</td>
+                    <td>{{ registro[3] }}</td>
+                    <td>{{ registro[4] }}</td>
+                    <td>{{ registro[5] }}</td>
+                    <td>{{ registro[7] }}</td>
+                    <td>{{ registro[8] }}</td>
+                    <td>{{ registro[9] }}</td>
+                    <td>{{ registro[10] }}</td>
+                    <td>{{ registro[11] }}</td>
+                    <td>{{ registro[12] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
